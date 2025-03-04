@@ -1,3 +1,7 @@
+"""
+Defines API endpoints and their logic.
+"""
+
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
@@ -27,8 +31,6 @@ class NoteDelete(generics.DestroyAPIView):
         user = self.request.user
         return Note.objects.filter(author=user) 
 
-
-# Create your views here.
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
